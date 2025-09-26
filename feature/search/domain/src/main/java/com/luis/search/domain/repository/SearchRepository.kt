@@ -5,7 +5,7 @@ import com.luis.search.domain.model.RecipeDetails
 
 interface SearchRepository {
 
-    suspend fun getRecipes(): List<Recipe>
+    suspend fun getRecipes(s:String): List<Recipe>
 
     suspend fun getRecipeDetails(id: String): RecipeDetails
 }
