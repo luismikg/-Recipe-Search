@@ -1,6 +1,8 @@
 package com.luis.search.data.di
 
 import com.luis.search.data.remote.SearchApiService
+import com.luis.search.data.repository.SearchRepositoryImpl
+import com.luis.search.domain.repository.SearchRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,5 +28,10 @@ object SearchDataModule {
     @Provides
     fun provideSearchAoiService(retrofit: Retrofit): SearchApiService {
         return retrofit.create(SearchApiService::class.java)
+    }
+
+    @Provides
+    fun provideSearchRepository(searchApiService: SearchApiService):SearchRepository {
+        return SearchRepositoryImpl(searchApiService)
     }
 }
